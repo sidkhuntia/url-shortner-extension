@@ -1,0 +1,81 @@
+:root {
+  --radius: 5px;
+  --shadows: 0px 2px 5px #5c5e5f8c;
+}
+
+body {
+  width: 375px;
+  padding: 10px;
+  text-align: center;
+}
+input {
+  /* width: 250px; */
+  margin: 10px 10px 10px 0;
+  border: none;
+  border: 2px solid black;
+  border-radius: var(--radius);
+  box-shadow: var(--shadows);
+  padding: 3px;
+
+  /* border-radius: 5px; */
+}
+
+.inputurl {
+  width: 95%;
+}
+.url:focus {
+  outline: none;
+  /* border: none; */
+  border-bottom: 2px solid black;
+}
+.url-short {
+  margin: 10px;
+  max-width: 350px;
+}
+
+.output {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.outputurl {
+  width: 320px;
+}
+.fas {
+  font-size: 23px;
+  margin-right: 6px;
+  text-decoration: none;
+}
+.short {
+  display: block;
+  /* margin: 15px auto 0px auto; */
+  margin: 0 auto;
+  width: 30%;
+  height: 19px;
+  font-weight: 700;
+  border: 2px solid black;
+  background-color: transparent;
+  border-radius: var(--radius);
+  box-shadow: var(--shadows);
+  transition: all 0.2s;
+}
+.short:hover {
+  transform: scale(1.05);
+}
+.short:active {
+  transform: scale(0.9);
+}
+.gear {
+  width: 22px;
+  padding-top: 4px;
+  margin-left: 10px;
+  padding-right: 8px;
+  background-color: transparent;
+}
+.link {
+  transition: all 0.2s;
+}
+.link:hover {
+  transform: rotate(90deg);
+}

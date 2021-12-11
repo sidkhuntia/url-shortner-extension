@@ -21,7 +21,7 @@ chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
 
 let body = {
     "long_url": JSON.stringify(curenttaburl),
-    "domain": "https://google.com",
+    "domain": "https://t.ly/",
     "api_token": "iv6iqOYJe5V3ZsOjsxMRsEYOb1y5nYqFyiVzkavkNyZBXIBz7R3I7Xb8aFw9",
 }
 button.addEventListener('click',()=>{
@@ -30,10 +30,14 @@ button.addEventListener('click',()=>{
     fetch(url, {
         method: "POST",
         headers: headers,
-        body: JSON.stringify(body)
+        body: JSON.stringify({
+          "long_url": curenttaburl,
+          "domain": "https://t.ly/",
+          "api_token": "iv6iqOYJe5V3ZsOjsxMRsEYOb1y5nYqFyiVzkavkNyZBXIBz7R3I7Xb8aFw9",
+        })
     })
         .then(response => response.json())
-        .then(json => {
+          .then(json => {
             console.log(JSON.stringify(curenttaburl))
             console.log(json)
             output.value = json.short_url;   

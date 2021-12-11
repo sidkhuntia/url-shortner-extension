@@ -13,3 +13,4 @@ This extension allows you to shorten URLs using **URL Shortener API**
 - [ ] Add option page
 - [ ] Allow users to choose which API to use
 - [ ] Add dark mode
+- [ ] Add loading animation

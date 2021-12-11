@@ -75,7 +75,10 @@ input {
 }
 .link {
   transition: all 0.2s;
+  position: relative;
 }
 .link:hover {
   transform: rotate(90deg);
+  top: -1px;
+  left: 1px;
 }

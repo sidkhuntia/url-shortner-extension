@@ -41,7 +41,7 @@ button.addEventListener('click',()=>{
             console.log(JSON.stringify(curenttaburl))
             console.log(json)
             output.value = json.short_url;   
-            
+          
         });
 });
 

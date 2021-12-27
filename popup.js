@@ -45,8 +45,12 @@ button.addEventListener('click',()=>{
         });
 });
 
-
-
+//checking for night mode
+chrome.storage.local.get({ "nightMode": "" }, function (result) {
+  if(result.nightMode === "true"){
+      document.body.classList.add("night");
+  }
+});
 
 
 

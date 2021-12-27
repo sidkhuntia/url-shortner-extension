@@ -1,23 +1,38 @@
 :root {
   --radius: 5px;
   --shadows: 0px 2px 5px #5c5e5f8c;
+  --textcolor: black;
+  --img-invert: 0;
+  --border-color: black;
+  --font-size: 0.9rem;
+  --padding: 4px 6px;
 }
+.night{
+  /* --background: rgba(255, 255, 255, 0.9); */
+  --textcolor: white;
+  --img-invert: 1;
+  --border-color: rgba(255,255,255,0.54);;
+  --shadows: 0px 2px 5px rgba(12, 12, 12, 1);
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
 
 body {
   width: 375px;
   padding: 10px;
   text-align: center;
+  /* font-size: 2rem; */
 }
 input {
-  /* width: 250px; */
   margin: 10px 10px 10px 0;
-  border: none;
-  border: 2px solid black;
+  font-size: var(--font-size);
+  color: var(--textcolor);
+  border: 2px solid var(--border-color);
   border-radius: var(--radius);
+  background-color: var(--background);
   box-shadow: var(--shadows);
-  padding: 3px;
+  padding: var(--padding);
 
-  /* border-radius: 5px; */
 }
 
 .inputurl {
@@ -25,13 +40,8 @@ input {
 }
 .url:focus {
   outline: none;
-  /* border: none; */
-  border-bottom: 2px solid black;
 }
-.url-short {
-  margin: 10px;
-  max-width: 350px;
-}
+
 
 .output {
   display: flex;
@@ -49,15 +59,17 @@ input {
 }
 .short {
   display: block;
-  /* margin: 15px auto 0px auto; */
   margin: 0 auto;
   width: 30%;
-  height: 19px;
-  font-weight: 700;
-  border: 2px solid black;
-  background-color: transparent;
+  color: var(--textcolor);
+  height: 23px;
+  font-weight: 600;
+  
+  border: 2px solid var(--border-color);
+  background-color: var(--background);
   border-radius: var(--radius);
   box-shadow: var(--shadows);
+  font-size: var(--font-size);
   transition: all 0.2s;
 }
 .short:hover {
@@ -72,6 +84,7 @@ input {
   margin-left: 10px;
   padding-right: 8px;
   background-color: transparent;
+  filter: invert(var(--img-invert));
 }
 .link {
   transition: all 0.2s;

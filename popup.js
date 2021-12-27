@@ -40,7 +40,16 @@ button.addEventListener('click',()=>{
           .then(json => {
             console.log(JSON.stringify(curenttaburl))
             console.log(json)
-            output.value = json.short_url;   
+            output.value = json.short_url;
+            chrome.storage.local.get(["copytoclipboard"], function (result) {
+              if(result.copytoclipboard === "true"){
+                navigator.clipboard.writeText(output.value);
+                $(".short").text("Copied!");
+                setTimeout(function(){
+                    $(".short").text("Shorten");
+                },1000);
+              }
+            });   
           
         });
 });

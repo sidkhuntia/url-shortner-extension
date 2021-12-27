@@ -35,7 +35,7 @@ h1 {
   font-size: 1.5rem;
   margin-bottom: 0px;
 }
-.input {
+.input form {
   display: grid;
   width: var(--width);
   margin: 0 auto;

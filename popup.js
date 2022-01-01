@@ -17,13 +17,6 @@ chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
   input.value = tabs[0].url;
 });
 
-
-
-let body = {
-    "long_url": JSON.stringify(curenttaburl),
-    "domain": "https://t.ly/",
-    "api_token": "iv6iqOYJe5V3ZsOjsxMRsEYOb1y5nYqFyiVzkavkNyZBXIBz7R3I7Xb8aFw9",
-}
 button.addEventListener('click',()=>{
     console.log("khuntia");
     output.value="Loading...."

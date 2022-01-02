@@ -49,6 +49,24 @@ button.click(()=>{
 
 });
 var urlShorteners = {
+    isgd: function (url) {
+      $.ajax({
+          url: "https://is.gd/create.php?format=json&url=" + encodeURIComponent(url) + "&logstats=1",
+          type: 'GET',
+          success: function (response) {
+              response = JSON.parse(response);
+              if (response.errorcode === 4) {
+                  var message= 'Your network address is banned from shortening URLs, usually due to abuse of our service in the past.' + "So please change to tinyurl by clicking Setting icon";
+                  output.val(message);
+                  return 0;
+              }
+              console.log(response);
+              handleActions(curenttaburl,response.shorturl);
+          }, error: function () {
+          }
+      });
+  
+    },
   tinyurl: function (url) {
       var req = new XMLHttpRequest();
       req.open("GET", "https://tinyurl.com/api-create.php?url=" + encodeURIComponent(url), true);
@@ -57,24 +75,6 @@ var urlShorteners = {
           handleActions(url, resp);
       }, false);
       req.send();
-  },
-  isgd: function (url) {
-    $.ajax({
-        url: "https://is.gd/create.php?format=json&url=" + encodeURIComponent(url) + "&logstats=1",
-        type: 'GET',
-        success: function (response) {
-            response = JSON.parse(response);
-            if (response.errorcode === 4) {
-                var message= 'Your network address is banned from shortening URLs, usually due to abuse of our service in the past.' + "So please change to tinyurl by clicking Setting icon";
-                output.val(message);
-                return 0;
-            }
-            console.log(response);
-            handleActions(curenttaburl,response.shorturl);
-        }, error: function () {
-        }
-    });
-
   },
   vgd: function (url) {
       $.ajax({

@@ -11,6 +11,63 @@ chrome.storage.local.get(["copytoclipboard"], function (result) {
     }
   });
 
+chrome.storage.local.get(["ApiKey"],function(value){
+    if(value.ApiKey){
+        $(".api").val(value.ApiKey);
+    }
+});
+chrome.storage.local.get(["preferredURL"],function(url){
+    console.log(url.preferredURL);
+    
+    var select = document.querySelector("select");
+    // console.log(select.options.length);
+    for(var i=0;select.options.length;i++){
+        var option = select.options[i];
+        if((option.value) === url.preferredURL){
+            option.selected = true;
+        }
+        else{
+            return 0;
+        }
+    }
+
+});
+
+
+  
+$("select").change(function(){
+    save($(this).val());
+    var selected = $(this).val();
+    if(selected === "bitly" || selected === "tly"){
+        $(".api").show();
+    }
+    else{
+        $(".api").hide();
+    }
+})
+
+function save(url){
+    chrome.storage.local.set({"preferredURL":url },function(){
+        chrome.storage.local.get(["preferredURL"],function(value){
+            console.log(value);
+        })
+    });
+}
+
+$("#data").submit(function(e){
+    let accessKey = ($(".api").val());
+    if(accessKey.length > 5){
+        chrome.storage.local.set({"ApiKey":accessKey}, function(){
+            console.log("api key saved");
+        })
+        $(".btn").html("SAVED !")
+        setTimeout(function(){
+            $(".btn").text("SAVE")
+        },1000)
+    }
+    e.preventDefault();
+    return false;
+});
 
 
 //night mode toggle 

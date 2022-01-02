@@ -16,7 +16,6 @@ chrome.storage.local.get(["ApiKey"],function(value){
         $(".api").val(value.ApiKey);
     }
 });
-$(".api").hide();
 chrome.storage.local.get(["preferredURL"],function(url){
     console.log(url.preferredURL);
     
@@ -31,9 +30,6 @@ chrome.storage.local.get(["preferredURL"],function(url){
             return 0;
         }
     }
-    if(url.preferredURL==="bit" || url.preferredURL==="tly"){
-        $(".api").show();
-    }
 
 });
 
@@ -42,12 +38,12 @@ chrome.storage.local.get(["preferredURL"],function(url){
 $("select").change(function(){
     save($(this).val());
     var selected = $(this).val();
-    if(selected === "bit" || selected === "tly"){
-        $(".api").show();
-    }
-    else{
-        $(".api").hide();
-    }
+    // if(selected === "bitly" || selected === "tly"){
+    //     $(".api").show();
+    // }
+    // else{
+    //     $(".api").hide();
+    // }
 })
 
 function save(url){

@@ -7,6 +7,9 @@
   --img-invert: 0;
   --width: 25%;
 }
+.hide{
+  display: none;
+}
 body {
   text-align: center;
   font-family: "Poppins", sans-serif;

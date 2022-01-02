@@ -12,7 +12,6 @@ function checkForUrl(url) {
 
 chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
   curenttaburl = tabs[0].url;
-  url = curenttaburl;
   input.val(curenttaburl);
 });
 
@@ -20,25 +19,39 @@ function copytoClipboard(text) {
   chrome.storage.local.get(["copytoclipboard"], function (result) {
     if (result.copytoclipboard === "true") {
       navigator.clipboard.writeText(text);
-      button.text("Copied!");
-      setTimeout(function () {
-        button.text("Shorten");
-      }, 1000);
+      $(".clipboard").removeClass("hide");
     }
   });
 }
 
+input.on("click", function () {
+  $(".clipboard").addClass("hide");
+  input.select();
+});
+output.on("focus", function () {
+  output.select();
+});
+
 function handleActions(lurl, res) {
   // tnyim return wrong error when url is short correct
-  if (!checkForUrl(url)) {
-    output.val("ERror");
-    return 0;
-  }
   copytoClipboard(res);
   output.val(res);
 }
 
-button.click(() => {
+button.click((event) => {
+  url = input.val();
+  if (!checkForUrl(url)) {
+    event.preventDefault();
+    $(".error").removeClass("hide");
+    $(".errmsg").text("The given text is not a URL");
+    return 0;
+  }
+  chrome.storage.local.get({ ApiKey: "" }, function (res) {
+    if (!res.ApiKey || res.ApiKey < 7) {
+      $(".error").removeClass("hide");
+      $(".errmsg").text("Please check the access key in Settings.");
+    }
+  });
   output.val("Loading....");
   chrome.storage.local.get(
     {
@@ -64,7 +77,8 @@ var urlShorteners = {
           var message =
             "Your network address is banned from shortening URLs, usually due to abuse of our service in the past." +
             "So please change to tinyurl by clicking Setting icon";
-          output.val(message);
+          $(".error").removeClass("hide").css("height", "120px");
+          $(".errmsg").text(message);
           return 0;
         }
         console.log(response);
@@ -100,10 +114,11 @@ var urlShorteners = {
       success: function (response) {
         response = JSON.parse(response);
         if (response.errorcode === 4) {
-          var message = document.querySelector("#message");
-          message.innerText =
+          var message =
             "Your network address is banned from shortening URLs, usually due to abuse of our service in the past." +
             "So please change to tinyurl by clicking Setting icon";
+          $(".error").removeClass("hide").css("height", "120px");
+          $(".errmsg").text(message);
           return 0;
         }
         handleActions(url, response.shorturl);
@@ -159,11 +174,9 @@ var urlShorteners = {
                 JSON.parse(req.responseText).status_txt ===
                 "INVALID_ARG_ACCESS_TOKEN"
               ) {
-                var message = document.querySelector(".error");
-                message.innerText =
-                  "Check the access token is correct for bitly in options page";
-                $(".error").show();
-                removeLoader();
+                var message = "Please check access token in Settings.";
+                $(".error").removeClass("hide");
+                $(".errmsg").text(message);
                 return 0;
               }
               var surl = JSON.parse(req.responseText).data.url;
@@ -174,8 +187,12 @@ var urlShorteners = {
           req.addEventListener(
             "error",
             function (e) {
-              //var resp = JSON.parse(req.responseText).shorturl.replace("http://", "https://");
-              console.log("errro");
+              var message =
+                "Your network address is banned from shortening URLs, usually due to abuse of our service in the past." +
+                "So please change to tinyurl by clicking Setting icon";
+              $(".error").removeClass("hide").css("height", "120px");
+              $(".errmsg").text(message);
+              return 0;
             },
             false
           );

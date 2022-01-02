@@ -15,3 +15,4 @@ This extension allows you to shorten URLs using **URL Shortener API**
 - [X] Add dark mode
 - [ ] Add loading animation
 - [ ] Add Firefox support
+- [ ] Make select tag properly wrok showing what api is used on startup

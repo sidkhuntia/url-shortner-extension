@@ -38,12 +38,12 @@ chrome.storage.local.get(["preferredURL"],function(url){
 $("select").change(function(){
     save($(this).val());
     var selected = $(this).val();
-    // if(selected === "bitly" || selected === "tly"){
-    //     $(".api").show();
-    // }
-    // else{
-    //     $(".api").hide();
-    // }
+    if(selected === "bitly" || selected === "tly"){
+        $(".api").show();
+    }
+    else{
+        $(".api").hide();
+    }
 })
 
 function save(url){

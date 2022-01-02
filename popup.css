@@ -4,18 +4,17 @@
   --textcolor: black;
   --img-invert: 0;
   --border-color: black;
-  --font-size: 0.9rem;
+  --font-size: 1rem;
   --padding: 4px 6px;
 }
-.night{
+.night {
   /* --background: rgba(255, 255, 255, 0.9); */
   --textcolor: white;
   --img-invert: 1;
-  --border-color: rgba(255,255,255,0.54);;
+  --border-color: rgba(255, 255, 255, 0.54);
   --shadows: 0px 2px 5px rgba(12, 12, 12, 1);
   background-color: rgba(0, 0, 0, 0.9);
 }
-
 
 body {
   width: 375px;
@@ -32,7 +31,6 @@ input {
   background-color: var(--background);
   box-shadow: var(--shadows);
   padding: var(--padding);
-
 }
 
 .inputurl {
@@ -41,7 +39,6 @@ input {
 .url:focus {
   outline: none;
 }
-
 
 .output {
   display: flex;
@@ -64,7 +61,7 @@ input {
   color: var(--textcolor);
   height: 23px;
   font-weight: 600;
-  
+
   border: 2px solid var(--border-color);
   background-color: var(--background);
   border-radius: var(--radius);

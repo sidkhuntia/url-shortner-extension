@@ -35,6 +35,9 @@ h1 {
   font-size: 1.5rem;
   margin-bottom: 0px;
 }
+select{
+  background: #b11414;
+}
 .input form {
   display: grid;
   width: var(--width);

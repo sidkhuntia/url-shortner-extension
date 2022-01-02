@@ -116,9 +116,9 @@ button.click(()=>{
 //   },
 //   bitly: function(url){
 //       chrome.storage.local.get({
-//           bitlyApiKey: false,
+//           ApiKey: false,
 //       }, function (res) {
-//           let apiKey =  res.bitlyApiKey;
+//           let apiKey =  res.ApiKey;
 //           if(apiKey){
 //           let longurl = encodeURIComponent(url);
 //           var req = new XMLHttpRequest();

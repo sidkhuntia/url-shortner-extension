@@ -10,11 +10,18 @@ chrome.storage.local.get(["copytoclipboard"], function (result) {
         $(".copy input[type=checkbox]").prop("checked", true);
     }
   });
+
+chrome.storage.local.get(["ApiKey"],function(value){
+    if(value.ApiKey){
+        $(".api").val(value.ApiKey);
+    }
+});
+$(".api").hide();
 chrome.storage.local.get(["preferredURL"],function(url){
-    preferredURL="isgd";
-    console.log(url);
+    console.log(url.preferredURL);
+    
     var select = document.querySelector("select");
-    console.log(select.options.length);
+    // console.log(select.options.length);
     for(var i=0;select.options.length;i++){
         var option = select.options[i];
         if((option.value) === url.preferredURL){
@@ -24,18 +31,23 @@ chrome.storage.local.get(["preferredURL"],function(url){
             return 0;
         }
     }
+    if(url.preferredURL==="bit" || url.preferredURL==="tly"){
+        $(".api").show();
+    }
+
 });
 
 
-  function saveOptions(){
-    $(".btn").html("SAVED !")
-    setTimeout(function(){
-        $(".btn").text("SAVE")
-    },1000)
-}
   
 $("select").change(function(){
     save($(this).val());
+    var selected = $(this).val();
+    if(selected === "bit" || selected === "tly"){
+        $(".api").show();
+    }
+    else{
+        $(".api").hide();
+    }
 })
 
 function save(url){
@@ -46,6 +58,20 @@ function save(url){
     });
 }
 
+$("#data").submit(function(e){
+    let accessKey = ($(".api").val());
+    if(accessKey.length > 5){
+        chrome.storage.local.set({"ApiKey":accessKey}, function(){
+            console.log("api key saved");
+        })
+        $(".btn").html("SAVED !")
+        setTimeout(function(){
+            $(".btn").text("SAVE")
+        },1000)
+    }
+    e.preventDefault();
+    return false;
+});
 
 
 //night mode toggle 

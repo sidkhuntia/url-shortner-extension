@@ -111,3 +111,4 @@ $(".qrdown input").on("click", function () {
     });
   });
 });
+  

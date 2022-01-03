@@ -235,7 +235,7 @@ function onClickHandler(info, tabs) {
       if (checkForUrl(info.linkUrl)) {
         urlShorteners[res.preferredURL](info.linkUrl);
       } else {
-        return 0;
+        console.log("URL not correct");
       }
     }
   );

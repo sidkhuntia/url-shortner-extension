@@ -263,7 +263,9 @@ async function downloadImage(imageSrc) {
 
   const link = document.createElement("a");
   link.href = imageURL;
-  link.download = "qrcode.png";
+  var time = new Date();
+  time = time.toLocaleDateString() + "_" + time.toLocaleTimeString();
+  link.download = "qrcode_" + time + ".png";
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);

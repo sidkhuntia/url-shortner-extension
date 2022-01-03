@@ -1,5 +1,7 @@
-![logo](./icons/icon.png)
-# URL Shortner Extension
+<div align="center">
+<img alt="logo" src="./icons/icon.png">
+<h1>URL Shorten Extension</h1>
+</div>
 
 ## Description
 

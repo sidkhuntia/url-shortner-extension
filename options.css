@@ -93,6 +93,7 @@ select {
 }
 .dark,
 .qr,
+.qrdown,
 .copy {
   display: flex;
   justify-content: space-between;

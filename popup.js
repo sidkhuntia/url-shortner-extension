@@ -24,8 +24,31 @@ function copytoClipboard(text) {
   });
 }
 
+function generateQR(url) {
+  chrome.storage.local.get(["qrcode"], function (result) {
+    if (result.qrcode === "true") {
+      var qrapi =
+        "https://api.qrserver.com/v1/create-qr-code/?data=" +
+        encodeURIComponent(url) +
+        "&amp;size=150x150";
+      $(".qrimg").attr("src", qrapi);
+      $(".qr").removeClass("hide");
+      chrome.storage.local.get(["qrdownload"], function (result) {
+        if (result.qrdownload === "true") {
+          $(".qr").on("click", function () {
+            downloadImage(qrapi);
+            console.log("Clicked!");
+          });
+          $(".qr").css("cursor", "pointer");
+        }
+      });
+    }
+  });
+}
+
 input.on("click", function () {
   $(".clipboard").addClass("hide");
+  $(".qr").addClass("hide");
   input.select();
 });
 output.on("focus", function () {
@@ -36,6 +59,7 @@ function handleActions(lurl, res) {
   // tnyim return wrong error when url is short correct
   copytoClipboard(res);
   output.val(res);
+  generateQR(lurl);
 }
 
 button.click((event) => {
@@ -231,6 +255,19 @@ var urlShorteners = {
     );
   },
 };
+
+async function downloadImage(imageSrc) {
+  const image = await fetch(imageSrc);
+  const imageBlog = await image.blob();
+  const imageURL = URL.createObjectURL(imageBlog);
+
+  const link = document.createElement("a");
+  link.href = imageURL;
+  link.download = "qrcode.png";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
 
 //checking for night mode
 chrome.storage.local.get({ nightMode: "" }, function (result) {

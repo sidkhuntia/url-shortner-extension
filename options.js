@@ -10,6 +10,16 @@ chrome.storage.local.get(["copytoclipboard"], function (result) {
     $(".copy input[type=checkbox]").prop("checked", true);
   }
 });
+chrome.storage.local.get(["qrcode"], function (result) {
+  if (result.qrcode === "true") {
+    $(".qr input[type=checkbox]").prop("checked", true);
+  }
+});
+chrome.storage.local.get(["qrdownload"], function (result) {
+  if (result.qrdownload === "true") {
+    $(".qrdown input[type=checkbox]").prop("checked", true);
+  }
+});
 
 chrome.storage.local.get(["ApiKey"], function (value) {
   if (value.ApiKey) {
@@ -84,6 +94,24 @@ $(".copy input").on("click", function () {
   var checked = $(this).is(":checked");
   chrome.storage.local.set({ copytoclipboard: String(checked) }, function () {
     chrome.storage.local.get(["copytoclipboard"], function (value) {
+      console.log(value);
+    });
+  });
+});
+//QR Code Generation
+$(".qr input").on("click", function () {
+  var checked = $(this).is(":checked");
+  chrome.storage.local.set({ qrcode: String(checked) }, function () {
+    chrome.storage.local.get(["qrcode"], function (value) {
+      console.log(value);
+    });
+  });
+});
+//QR code image download
+$(".qrdown input").on("click", function () {
+  var checked = $(this).is(":checked");
+  chrome.storage.local.set({ qrdownload: String(checked) }, function () {
+    chrome.storage.local.get(["qrdownload"], function (value) {
       console.log(value);
     });
   });

@@ -133,3 +133,6 @@ input {
 .hide {
   display: none;
 }
+.qr{
+  margin-top: 20px;
+}

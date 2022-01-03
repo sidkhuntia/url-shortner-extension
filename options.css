@@ -5,7 +5,7 @@
   --background: rgb(122, 122, 122, 0.4);
   --toggle-btn-color: white;
   --img-invert: 0;
-  --width: 25%;
+  --width: 40%;
 }
 .hide {
   display: none;
@@ -52,7 +52,7 @@ select {
 
 .input form {
   display: grid;
-  width: var(--width);
+  width: 30%;
   margin: 0 auto;
   /* margin-bottom: 40px; */
 }
@@ -185,4 +185,32 @@ img {
 .fab {
   margin-left: 20px;
   text-decoration: none;
+}
+
+/* responsive  */
+@media (min-width:1320px){
+  .option{
+    padding: 0 200px;
+  }
+  .input form{
+    width: 20%;  
+  }
+}
+@media (max-width:1320px){
+  .option{
+    font-size: 1rem;
+  }
+  .switch{
+    width: 40px;
+    height: 18px;
+  }
+  .slider::before{
+    width: 14px;
+    height: 14px;
+  }
+  input:checked + .slider:before {
+    -webkit-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    transform: translateX(20px);
+  }
 }

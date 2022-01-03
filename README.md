@@ -1,3 +1,4 @@
+![logo](./icons/icon.png)
 # URL Shortner Extension
 
 ## Description

@@ -1,31 +1,26 @@
 // checking option on load
-chrome.storage.local.get(["nightMode"], function (result) {
-  if (result.nightMode === "true") {
-    document.body.classList.add("night");
-    $(".dark input[type=checkbox]").prop("checked", true);
+chrome.storage.local.get(
+  ["nightMode", "copytoclipboard", "qrcode", "qrdownload", "ApiKey"],
+  function (result) {
+    if (result.nightMode === "true") {
+      document.body.classList.add("night");
+      $(".dark input[type=checkbox]").prop("checked", true);
+    }
+    if (result.copytoclipboard === "true") {
+      $(".copy input[type=checkbox]").prop("checked", true);
+    }
+    if (result.qrcode === "true") {
+      $(".qr input[type=checkbox]").prop("checked", true);
+    }
+    if (result.qrdownload === "true") {
+      $(".qrdown input[type=checkbox]").prop("checked", true);
+    }
+    if (result.ApiKey) {
+      $(".api").val(result.ApiKey);
+    }
   }
-});
-chrome.storage.local.get(["copytoclipboard"], function (result) {
-  if (result.copytoclipboard === "true") {
-    $(".copy input[type=checkbox]").prop("checked", true);
-  }
-});
-chrome.storage.local.get(["qrcode"], function (result) {
-  if (result.qrcode === "true") {
-    $(".qr input[type=checkbox]").prop("checked", true);
-  }
-});
-chrome.storage.local.get(["qrdownload"], function (result) {
-  if (result.qrdownload === "true") {
-    $(".qrdown input[type=checkbox]").prop("checked", true);
-  }
-});
+);
 
-chrome.storage.local.get(["ApiKey"], function (value) {
-  if (value.ApiKey) {
-    $(".api").val(value.ApiKey);
-  }
-});
 chrome.storage.local.get(["preferredURL"], function (url) {
   console.log(url.preferredURL);
 

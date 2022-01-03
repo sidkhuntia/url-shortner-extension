@@ -25,7 +25,7 @@ function copytoClipboard(text) {
 }
 
 function generateQR(url) {
-  chrome.storage.local.get(["qrcode"], function (result) {
+  chrome.storage.local.get(["qrcode", "qrdownload"], function (result) {
     if (result.qrcode === "true") {
       var qrapi =
         "https://api.qrserver.com/v1/create-qr-code/?data=" +
@@ -33,15 +33,13 @@ function generateQR(url) {
         "&amp;size=150x150";
       $(".qrimg").attr("src", qrapi);
       $(".qr").removeClass("hide");
-      chrome.storage.local.get(["qrdownload"], function (result) {
-        if (result.qrdownload === "true") {
-          $(".qr").on("click", function () {
-            downloadImage(qrapi);
-            console.log("Clicked!");
-          });
-          $(".qr").css("cursor", "pointer");
-        }
-      });
+      if (result.qrdownload === "true") {
+        $(".qr").on("click", function () {
+          downloadImage(qrapi);
+          console.log("Clicked!");
+        });
+        $(".qr").css("cursor", "pointer");
+      }
     }
   });
 }

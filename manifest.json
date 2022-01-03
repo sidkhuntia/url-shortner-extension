@@ -21,6 +21,7 @@
   },
   "permissions": ["contextMenus", "activeTab", "storage", "tabs"],
   "background": {
-    "scripts": ["background.js"]
+    "scripts": ["background.js"],
+    "persistent": false
   }
 }

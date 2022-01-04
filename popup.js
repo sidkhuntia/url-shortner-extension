@@ -55,8 +55,8 @@ output.on("focus", function () {
 
 function handleActions(lurl, res) {
   // tnyim return wrong error when url is short correct
-  copytoClipboard(res);
   output.val(res);
+  copytoClipboard(res);
   generateQR(lurl);
 }
 
@@ -197,7 +197,7 @@ var urlShorteners = {
                 "INVALID_ARG_ACCESS_TOKEN"
               ) {
                 var message = "Please check access token in Settings.";
-                $(".error").removeClass("hide");
+                $(".error").removeClass("hide").css("height", "50px");
                 $(".errmsg").text(message);
                 return 0;
               }
@@ -214,6 +214,7 @@ var urlShorteners = {
                 "So please change to tinyurl by clicking Setting icon";
               $(".error").removeClass("hide").css("height", "120px");
               $(".errmsg").text(message);
+              output.val("asda");
               return 0;
             },
             false

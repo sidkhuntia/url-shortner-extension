@@ -20,5 +20,8 @@ This extension allows you to shorten URLs using **URL Shortener API**
 - [X] Add right-click context menu
 - [X] Add ERror handling
 - [X] Make it responsive
+- [X] Make select tag properly wrok showing what api is used on startup
 - [ ] Add Firefox support
-- [ ] Make select tag properly wrok showing what api is used on startup
+- [ ] ERror mssg on wrong api
+- [ ] Added badges for better apis
+- [ ] Select tag css

@@ -1,6 +1,14 @@
 // checking option on load
+
 chrome.storage.local.get(
-  ["nightMode", "copytoclipboard", "qrcode", "qrdownload", "ApiKey"],
+  [
+    "nightMode",
+    "copytoclipboard",
+    "qrcode",
+    "qrdownload",
+    "ApiKey",
+    "preferredURL",
+  ],
   function (result) {
     if (result.nightMode === "true") {
       document.body.classList.add("night");
@@ -18,28 +26,21 @@ chrome.storage.local.get(
     if (result.ApiKey) {
       $(".api").val(result.ApiKey);
     }
-  }
-);
-
-chrome.storage.local.get(["preferredURL"], function (url) {
-  console.log(url.preferredURL);
-
-  var select = document.querySelector("select");
-  // console.log(select.options.length);
-  for (var i = 0; select.options.length; i++) {
-    var option = select.options[i];
-    if (option.value === url.preferredURL) {
-      option.selected = true;
+    $("select").val(result.preferredURL).attr("selected", "selected");
+    if (result.preferredURL == "bitly" || result.preferredURL == "tly") {
+      $(".api").show();
     } else {
-      return 0;
+      $(".api").hide();
     }
   }
+);
+$(".api").on("focus", function () {
+  $(this).select();
 });
-
+var selected_global;
 $("select").change(function () {
-  save($(this).val());
-  var selected = $(this).val();
-  if (selected === "bitly" || selected === "tly") {
+  selected_global = $(this).val();
+  if (selected_global === "bitly" || selected_global === "tly") {
     $(".api").show();
   } else {
     $(".api").hide();
@@ -57,6 +58,7 @@ function save(url) {
 $("#data").submit(function (e) {
   let accessKey = $(".api").val();
   if (accessKey.length > 5) {
+    save(selected_global);
     chrome.storage.local.set({ ApiKey: accessKey }, function () {
       console.log("api key saved");
     });
@@ -111,4 +113,3 @@ $(".qrdown input").on("click", function () {
     });
   });
 });
-  

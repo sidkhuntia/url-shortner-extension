@@ -27,24 +27,29 @@ chrome.storage.local.get(
       $(".api").val(result.ApiKey);
     }
     $("select").val(result.preferredURL).attr("selected", "selected");
-    if (result.preferredURL == "bitly" || result.preferredURL == "tly") {
+    if (result.preferredURL == "bitly") {
       $(".api").show();
     } else {
+      $(".btn").css("margin-top","0px");
       $(".api").hide();
     }
   }
 );
 $(".api").on("focus", function () {
   $(this).select();
+  $(".errmsg").addClass("hide");
 });
-var selected_global;
+var selected_api;
 $("select").change(function () {
-  selected_global = $(this).val();
-  if (selected_global === "bitly" || selected_global === "tly") {
+  selected_api = $(this).val();
+  if (selected_api === "bitly") {
     $(".api").show();
+    $(".btn").css("margin-top","20px");
   } else {
+    $(".btn").css("margin-top","0px");
     $(".api").hide();
   }
+  $(".errmsg").addClass("hide");
 });
 
 function save(url) {
@@ -58,23 +63,23 @@ function save(url) {
 $("#data").submit(function (e) {
   let accessKey = $(".api").val();
   e.preventDefault();
-  if (accessKey.length > 5) {
-    save(selected_global);
-    chrome.storage.local.set({ ApiKey: accessKey }, function () {
-      console.log("api key saved");
-    });
-    $(".btn").html("SAVED !");
-    setTimeout(function () {
-      $(".btn").text("SAVE");
-    }, 1000);
-    $(".errmsg").addClass("visible");
-    
+  if (selected_api == "bitly") {
+    if (accessKey.length > 5) {
+      chrome.storage.local.set({ ApiKey: accessKey }, function () {
+        console.log("api key saved");
+      });
+      $(".errmsg").addClass("hide");
+      save(selected_api);
+    } else {
+      $(".errmsg").removeClass("hide");
+      return false;
+    }
   }
-  else{
-    $(".errmsg").removeClass("visible");
-    return false;
-
-  }
+  save(selected_api);
+  $(".btn").html("SAVED !");
+  setTimeout(function () {
+    $(".btn").text("SAVE");
+  }, 1000);
 });
 
 //night mode toggle

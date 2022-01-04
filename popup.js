@@ -242,7 +242,7 @@ var urlShorteners = {
             body: JSON.stringify({
               long_url: url,
               domain: "https://t.ly/",
-              api_token: apikey,
+              api_token: "hi",
             }),
           })
             .then((response) => response.json())

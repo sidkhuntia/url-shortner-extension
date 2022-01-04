@@ -57,6 +57,7 @@ function save(url) {
 
 $("#data").submit(function (e) {
   let accessKey = $(".api").val();
+  e.preventDefault();
   if (accessKey.length > 5) {
     save(selected_global);
     chrome.storage.local.set({ ApiKey: accessKey }, function () {
@@ -66,9 +67,14 @@ $("#data").submit(function (e) {
     setTimeout(function () {
       $(".btn").text("SAVE");
     }, 1000);
+    $(".errmsg").addClass("visible");
+    
   }
-  e.preventDefault();
-  return false;
+  else{
+    $(".errmsg").removeClass("visible");
+    return false;
+
+  }
 });
 
 //night mode toggle

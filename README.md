@@ -23,3 +23,4 @@ This extension allows you to shorten URLs using **URL Shortener API**
 - [X] Make select tag properly wrok showing what api is used on startup
 - [X] ERror mssg on wrong api
 - [ ] Add Firefox support
+- [ ] bitly error on startup(when selected) and install

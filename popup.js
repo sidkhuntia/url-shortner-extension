@@ -68,23 +68,29 @@ button.click((event) => {
     $(".errmsg").text("The given text is not a URL");
     return 0;
   }
-  chrome.storage.local.get({ ApiKey: "" }, function (res) {
-    if (!res.ApiKey || res.ApiKey < 7) {
-      $(".error").removeClass("hide");
-      $(".errmsg").text("Please check the access key in Settings.");
-    }
-  });
+
   output.val("Loading....");
   chrome.storage.local.get(
-    {
-      preferredURL: "isgd",
-    },
+    [
+      "preferredURL", "Apikey",
+    ],
     function (res) {
       preferredShortURL = res.preferredURL;
+      if(preferredShortURL === "bitly"){
+        chrome.storage.local.get({ ApiKey: "" }, function (res) {
+          if (!res.ApiKey || res.ApiKey < 7) {
+            $(".error").removeClass("hide");
+            $(".errmsg").text("Please check the access key in Settings.");
+            console.log("Please check the access key in Settings.");
+          }
+        });
+      }
       urlShorteners[preferredShortURL](url);
     }
   );
 });
+
+// bunch of url shorteners
 var urlShorteners = {
   isgd: function (url) {
     $.ajax({

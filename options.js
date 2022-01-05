@@ -28,10 +28,10 @@ chrome.storage.local.get(
     }
     $("select").val(result.preferredURL).attr("selected", "selected");
     if (result.preferredURL == "bitly") {
-      $(".api").show();
+      $(".api").removeClass("hide");
     } else {
       $(".btn").css("margin-top","0px");
-      $(".api").hide();
+      $(".api").addClass("hide");
     }
   }
 );
@@ -43,11 +43,11 @@ var selected_api;
 $("select").change(function () {
   selected_api = $(this).val();
   if (selected_api === "bitly") {
-    $(".api").show();
+    $(".api").removeClass("hide");
     $(".btn").css("margin-top","20px");
   } else {
     $(".btn").css("margin-top","0px");
-    $(".api").hide();
+    $(".api").addClass("hide");
   }
   $(".errmsg").addClass("hide");
 });
@@ -61,15 +61,14 @@ function save(url) {
 }
 
 $("#data").submit(function (e) {
-  let accessKey = $(".api").val();
   e.preventDefault();
   if (selected_api == "bitly") {
+    let accessKey = $(".api").val();
     if (accessKey.length > 5) {
       chrome.storage.local.set({ ApiKey: accessKey }, function () {
-        console.log("api key saved");
+        // console.log("api key saved");
       });
       $(".errmsg").addClass("hide");
-      save(selected_api);
     } else {
       $(".errmsg").removeClass("hide");
       return false;

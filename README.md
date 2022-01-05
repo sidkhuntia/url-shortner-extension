@@ -10,7 +10,7 @@ This extension allows you to shorten URLs using **is.gd, v.gd, tny.im, bit.ly, t
 ![images](images/img.png)
 
 ## Features
-1. Uses is.gd, v.gd, tny.im, bit.ly, tinyurl.com
+1. Uses  various clients like **is.gd, v.gd, tny.im, bit.ly, tinyurl.com**
 2. Use of Right Click Menu
 
     ![alt-click](./images/hi.png)

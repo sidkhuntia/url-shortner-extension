@@ -230,35 +230,6 @@ var urlShorteners = {
       }
     );
   },
-  tly: function (url) {
-    let headers = {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    };
-    chrome.storage.local.get(
-      {
-        ApiKey: false,
-      },
-      function (res) {
-        let apikey = res.ApiKey;
-        if (apikey) {
-          fetch("https://t.ly/api/v1/link/shorten", {
-            method: "POST",
-            headers: headers,
-            body: JSON.stringify({
-              long_url: url,
-              domain: "https://t.ly/",
-              api_token: "hi",
-            }),
-          })
-            .then((response) => response.json())
-            .then((json) => {
-              handleActions(url, json.short_url);
-            });
-        }
-      }
-    );
-  },
 };
 
 async function downloadImage(imageSrc) {

@@ -19,9 +19,15 @@
     "page": "public/options.html",
     "open_in_tab": true
   },
-  "permissions": ["contextMenus", "activeTab", "storage", "tabs"],
+  "permissions": ["contextMenus", "activeTab", "storage", "tabs","clipboardWrite"],
   "background": {
     "scripts": ["background.js"],
     "persistent": false
+  },
+  "browser_specific_settings":{
+    "gecko":{
+      "id": "siddharthakhuntia@gmail.com",
+      "strict_min_version":"88.0"
+    }
   }
 }

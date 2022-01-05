@@ -1,0 +1,138 @@
+:root {
+  --radius: 6px;
+  --shadows: 0px 2px 5px #5c5e5f8c;
+  --textcolor: black;
+  --img-invert: 0;
+  --border-color: black;
+  --font-size: 1rem;
+  --padding: 4px 6px;
+}
+.night {
+  /* --background: rgba(255, 255, 255, 0.9); */
+  --textcolor: white;
+  --img-invert: 1;
+  --border-color: rgba(255, 255, 255, 0.54);
+  --shadows: 0px 2px 5px rgba(12, 12, 12, 1);
+  background-color: rgba(0, 0, 0, 0.9);
+}
+::selection {
+  color: white;
+  background-color: rgba(30, 30, 214, 0.568);
+}
+
+body {
+  width: 375px;
+  padding: 10px;
+  text-align: center;
+  /* font-size: 2rem; */
+}
+input {
+  margin: 10px 10px 10px 0;
+  font-size: var(--font-size);
+  color: var(--textcolor);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius);
+  background-color: var(--background);
+  box-shadow: var(--shadows);
+  padding: var(--padding);
+}
+
+.inputurl {
+  width: 95%;
+}
+.url:focus {
+  outline: none;
+}
+
+.output {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.outputurl {
+  width: 320px;
+}
+.fas {
+  font-size: 23px;
+  margin-right: 6px;
+  text-decoration: none;
+}
+.short {
+  display: block;
+  margin: 0 auto;
+  width: 30%;
+  color: var(--textcolor);
+  height: 23px;
+  font-weight: 600;
+
+  border: 2px solid var(--border-color);
+  background-color: var(--background);
+  border-radius: var(--radius);
+  box-shadow: var(--shadows);
+  font-size: var(--font-size);
+  transition: all 0.2s;
+}
+.short:hover {
+  transform: scale(1.05);
+}
+.short:active {
+  transform: scale(0.9);
+}
+.gear {
+  width: 22px;
+  padding-top: 2px;
+  margin-left: 10px;
+  padding-right: 8px;
+  background-color: transparent;
+  filter: invert(var(--img-invert));
+}
+.link {
+  transition: all 0.2s;
+  position: relative;
+}
+.link:hover {
+  transform: rotate(90deg);
+  top: -1px;
+  left: 1px;
+}
+.error {
+  color: #d8000c;
+  background-color: #ffbaba;
+  /* background-image: url("/error.png"); */
+  background-repeat: no-repeat;
+  height: 30px;
+  border-radius: var(--radius);
+  font-size: var(--font-size);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+}
+.errimg {
+  width: 26px;
+  margin-right: 20px;
+}
+.clipboard {
+  color: #000000;
+  background-color: #dda15e;
+  /* background-image: url("/error.png"); */
+  background-repeat: no-repeat;
+  height: 30px;
+  border-radius: var(--radius);
+  font-size: var(--font-size);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+}
+.copyimg {
+  width: 22px;
+  margin-right: 20px;
+}
+.hide {
+  display: none;
+}
+.qr{
+  margin-top: 20px;
+}

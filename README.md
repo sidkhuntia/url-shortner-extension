@@ -10,14 +10,15 @@ This extension allows you to shorten URLs using **is.gd, v.gd, tny.im, bit.ly, t
 ![images](images/img.png)
 
 ## Features
-1. Use of Right Click Menu
+1. Uses is.gd, v.gd, tny.im, bit.ly, tinyurl.com
+2. Use of Right Click Menu
 
     ![alt-click](./images/hi.png)
 
-2. Generate QR Code
+3. Generate QR Code
 
-3. Auto-Copy URL to Clipboard
-4. Dark-Mode support
+4. Auto-Copy URL to Clipboard
+5. Dark-Mode support
 
     ![alt-click](./images/qr.png#gh-dark-mode-only)
     ![alt-click](./images/qr-light.png#gh-light-mode-only)

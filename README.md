@@ -41,4 +41,5 @@ This extension allows you to shorten URLs using **is.gd, v.gd, tny.im, bit.ly, t
     
 
 
-<!-- ### For Firefox -->
+### For Firefox
+[Click here!](https://addons.mozilla.org/en-US/firefox/addon/url-shorten/)

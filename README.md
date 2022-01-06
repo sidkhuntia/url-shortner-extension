@@ -13,7 +13,7 @@ This extension allows you to shorten URLs using **is.gd, v.gd, tny.im, bit.ly, t
 1. Uses  various clients like **is.gd, v.gd, tny.im, bit.ly, tinyurl.com**
 2. Use of Right Click Menu
 
-    ![alt-click](./images/hi.png) 
+    ![alt-click](./images/click.png) 
 
 3. Generate QR Code
 

@@ -26,7 +26,7 @@ chrome.runtime.onInstalled.addListener(function (details) {
 
   if (details.reason == "install") {
     chrome.storage.local.set({
-      preferredURL: "isgd",
+      preferredURL: "vgd",
     });
     chrome.storage.local.set({ nightMode: "true" });
   }
@@ -221,7 +221,7 @@ function onClickHandler(info, tabs) {
 
   chrome.storage.local.get(
     {
-      preferredURL: "isgd",
+      preferredURL: "vgd",
     },
     function (res) {
       if (info.menuItemId !== "shorternhoverlink") {
